@@ -5,8 +5,19 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Users, Activity, AlertTriangle, Eye, TrendingUp, TrendingDown } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const Traders = () => {
+  const { toast } = useToast();
+
+  const handleViewTrader = (trader: any) => {
+    toast({
+      title: "Trader Profile",
+      description: `Viewing detailed profile for ${trader.name} (${trader.id})`,
+    });
+    console.log("Viewing trader details:", trader);
+  };
+
   const traders = [
     { id: "TR001", name: "John Smith", status: "Active", trades: 247, volume: "$2.4M", risk: "Low", performance: "+12.4%" },
     { id: "TR002", name: "Sarah Johnson", status: "Active", trades: 189, volume: "$1.8M", risk: "Medium", performance: "+8.7%" },
@@ -144,7 +155,11 @@ const Traders = () => {
                       {trader.performance}
                     </TableCell>
                     <TableCell>
-                      <Button variant="ghost" size="sm">
+                      <Button 
+                        variant="ghost" 
+                        size="sm"
+                        onClick={() => handleViewTrader(trader)}
+                      >
                         <Eye className="h-4 w-4" />
                       </Button>
                     </TableCell>

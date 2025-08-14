@@ -7,11 +7,45 @@ import { Progress } from "@/components/ui/progress";
 import { Shield, AlertCircle, CheckCircle, Eye, FileText, Clock } from "lucide-react";
 import { useRealtimeData } from "@/hooks/useRealtimeData";
 import { EvidenceForm } from "@/components/EvidenceForm";
+import { useToast } from "@/hooks/use-toast";
 
 export const ComplianceMonitor = () => {
   const { compliance } = useRealtimeData();
+  const { toast } = useToast();
   const [evidenceFormOpen, setEvidenceFormOpen] = useState(false);
   const [selectedInvestigationId, setSelectedInvestigationId] = useState("");
+
+  const handleViewDetails = (item: any) => {
+    toast({
+      title: "Compliance Details",
+      description: `Viewing detailed information for: ${item.title}`,
+    });
+    console.log("Viewing compliance details:", item);
+  };
+
+  const handleViewCaseFile = (investigation: any) => {
+    toast({
+      title: "Case File Opened",
+      description: `Opening case file for investigation: ${investigation.id}`,
+    });
+    console.log("Opening case file:", investigation);
+  };
+
+  const handleViewTimeline = (investigation: any) => {
+    toast({
+      title: "Investigation Timeline",
+      description: `Viewing timeline for investigation: ${investigation.id}`,
+    });
+    console.log("Viewing timeline:", investigation);
+  };
+
+  const handleViewHistory = () => {
+    toast({
+      title: "Investigation History",
+      description: "Opening investigation history dashboard",
+    });
+    console.log("Viewing investigation history");
+  };
 
   const complianceItems = [
     {
@@ -115,7 +149,12 @@ export const ComplianceMonitor = () => {
                     <Clock className="h-3 w-3 mr-1" />
                     Last check: {item.lastCheck}
                   </div>
-                  <Button variant="ghost" size="sm" className="h-6 text-xs hover:bg-muted">
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    className="h-6 text-xs hover:bg-muted"
+                    onClick={() => handleViewDetails(item)}
+                  >
                     Details
                   </Button>
                 </div>
@@ -154,7 +193,12 @@ export const ComplianceMonitor = () => {
                       {investigation.priority.toUpperCase()}
                     </Badge>
                   </div>
-                  <Button variant="ghost" size="sm" className="h-6 text-xs hover:bg-muted">
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    className="h-6 text-xs hover:bg-muted"
+                    onClick={() => handleViewCaseFile(investigation)}
+                  >
                     <FileText className="h-3 w-3 mr-1" />
                     Case File
                   </Button>
@@ -176,7 +220,12 @@ export const ComplianceMonitor = () => {
                 </div>
                 
                 <div className="mt-3 pt-3 border-t border-border flex justify-between">
-                  <Button variant="ghost" size="sm" className="text-xs hover:bg-muted">
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    className="text-xs hover:bg-muted"
+                    onClick={() => handleViewTimeline(investigation)}
+                  >
                     View Timeline
                   </Button>
                   <Button 
@@ -199,7 +248,11 @@ export const ComplianceMonitor = () => {
               </div>
             )}
             
-            <Button variant="outline" className="w-full mt-4 bg-muted/20 hover:bg-muted/40">
+            <Button 
+              variant="outline" 
+              className="w-full mt-4 bg-muted/20 hover:bg-muted/40"
+              onClick={handleViewHistory}
+            >
               View Investigation History
             </Button>
           </CardContent>

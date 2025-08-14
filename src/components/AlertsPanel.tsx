@@ -3,9 +3,20 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { AlertTriangle, Shield, TrendingDown, Clock } from "lucide-react";
 import { useRealtimeData } from "@/hooks/useRealtimeData";
+import { useToast } from "@/hooks/use-toast";
 
 export const AlertsPanel = () => {
   const { alerts } = useRealtimeData();
+  const { toast } = useToast();
+
+  const handleInvestigate = (alert: any) => {
+    toast({
+      title: "Investigation Started",
+      description: `Opening investigation for: ${alert.title}`,
+    });
+    // Here you would typically navigate to an investigation page or open a detailed modal
+    console.log("Investigating alert:", alert);
+  };
 
   const alertIcons = {
     critical: AlertTriangle,
@@ -75,7 +86,12 @@ export const AlertsPanel = () => {
                       <Clock className="h-3 w-3 mr-1" />
                       {alert.time}
                     </div>
-                    <Button variant="ghost" size="sm" className="h-6 text-xs hover:bg-muted">
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="h-6 text-xs hover:bg-muted"
+                      onClick={() => handleInvestigate(alert)}
+                    >
                       Investigate
                     </Button>
                   </div>
