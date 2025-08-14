@@ -1,4 +1,56 @@
-# Welcome to your Lovable project
+# ZSE Guard AI - Market Surveillance & Compliance System
+
+## About This Application
+
+**ZSE Guard AI** is a comprehensive financial market surveillance and compliance monitoring system designed for the Zimbabwe Stock Exchange (ZSE). This real-time monitoring platform helps detect suspicious trading activities, ensure regulatory compliance, and maintain market integrity.
+
+### Key Features
+
+🔍 **Real-Time Market Surveillance**
+- Live monitoring of trading activities and market data
+- Advanced AI-powered detection of unusual trading patterns
+- Real-time price and volume tracking with interactive charts
+
+🚨 **Intelligent Alert System**
+- Automated detection of potential market manipulation (wash trading, spoofing, layering)
+- Insider trading surveillance with cross-referencing capabilities
+- Customizable alert priorities (Critical, Warning, Info)
+- Real-time notifications for suspicious activities
+
+👥 **Trader Monitoring**
+- Comprehensive trader activity tracking
+- Risk assessment and performance analytics
+- Individual trader profile management
+- Position limit monitoring and compliance
+
+📊 **Compliance Management**
+- Real-time compliance score calculation
+- Investigation case management system
+- Evidence collection and documentation
+- Regulatory reporting capabilities
+
+🔬 **Investigation Tools**
+- Active investigation tracking
+- Evidence form submission system
+- Case file management
+- Investigation timeline visualization
+
+### Dashboard Overview
+
+The application provides multiple specialized views:
+
+- **Dashboard**: Central hub with metrics overview and real-time alerts
+- **Markets**: Detailed market data, charts, and trading statistics  
+- **Compliance**: Compliance monitoring, investigations, and regulatory status
+- **Traders**: Individual trader monitoring and risk assessment
+
+### Technologies Used
+
+This system leverages modern technologies to ensure reliability and performance:
+- **AI/ML Integration**: Advanced algorithms for pattern detection
+- **Real-Time Data**: Live market data streaming and updates
+- **Responsive Design**: Works seamlessly across desktop and mobile devices
+- **Secure Architecture**: Built with security and compliance in mind
 
 ## Project info
 
